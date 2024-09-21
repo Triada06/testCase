@@ -1,0 +1,207 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C8A385A0-C60A-499E-9A61-0336EB0EA838}|CourseApp\\CourseApp.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\courseapp\\controllers\\studentcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8A385A0-C60A-499E-9A61-0336EB0EA838}|CourseApp\\CourseApp.csproj|solutionrelative:courseapp\\controllers\\studentcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F06C6CD0-92E9-4BFF-B33F-7873598C5C35}|Repository\\Repository.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\repository\\repositories\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F06C6CD0-92E9-4BFF-B33F-7873598C5C35}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F06C6CD0-92E9-4BFF-B33F-7873598C5C35}|Repository\\Repository.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\repository\\repositories\\grouprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F06C6CD0-92E9-4BFF-B33F-7873598C5C35}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\grouprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8A385A0-C60A-499E-9A61-0336EB0EA838}|CourseApp\\CourseApp.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\courseapp\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8A385A0-C60A-499E-9A61-0336EB0EA838}|CourseApp\\CourseApp.csproj|solutionrelative:courseapp\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8A385A0-C60A-499E-9A61-0336EB0EA838}|CourseApp\\CourseApp.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\courseapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8A385A0-C60A-499E-9A61-0336EB0EA838}|CourseApp\\CourseApp.csproj|solutionrelative:courseapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F06C6CD0-92E9-4BFF-B33F-7873598C5C35}|Repository\\Repository.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\repository\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F06C6CD0-92E9-4BFF-B33F-7873598C5C35}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\baserepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4279C572-6C8F-4BB8-81B8-AC2ED153D054}|Service\\Service.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\service\\service\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4279C572-6C8F-4BB8-81B8-AC2ED153D054}|Service\\Service.csproj|solutionrelative:service\\service\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4279C572-6C8F-4BB8-81B8-AC2ED153D054}|Service\\Service.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\service\\service\\interfaces\\istudentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4279C572-6C8F-4BB8-81B8-AC2ED153D054}|Service\\Service.csproj|solutionrelative:service\\service\\interfaces\\istudentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4279C572-6C8F-4BB8-81B8-AC2ED153D054}|Service\\Service.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\service\\service\\groupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4279C572-6C8F-4BB8-81B8-AC2ED153D054}|Service\\Service.csproj|solutionrelative:service\\service\\groupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F06C6CD0-92E9-4BFF-B33F-7873598C5C35}|Repository\\Repository.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\repository\\repositories\\interfaces\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F06C6CD0-92E9-4BFF-B33F-7873598C5C35}|Repository\\Repository.csproj|solutionrelative:repository\\repositories\\interfaces\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8A385A0-C60A-499E-9A61-0336EB0EA838}|CourseApp\\CourseApp.csproj|c:\\users\\nizam\\documents\\c#\\courseapp\\courseapp\\helpers\\enummethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8A385A0-C60A-499E-9A61-0336EB0EA838}|CourseApp\\CourseApp.csproj|solutionrelative:courseapp\\helpers\\enummethods.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GroupService.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Service\\Service\\GroupService.cs",
+              "RelativeDocumentMoniker": "Service\\Service\\GroupService.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Service\\Service\\GroupService.cs",
+              "RelativeToolTip": "Service\\Service\\GroupService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAB4AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-21T11:24:23.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StudentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Repository\\Repositories\\StudentRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\StudentRepository.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Repository\\Repositories\\StudentRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\StudentRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAB6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-21T10:06:18.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "EnumMethods.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\CourseApp\\Helpers\\EnumMethods.cs",
+              "RelativeDocumentMoniker": "CourseApp\\Helpers\\EnumMethods.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\CourseApp\\Helpers\\EnumMethods.cs",
+              "RelativeToolTip": "CourseApp\\Helpers\\EnumMethods.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-21T09:08:10.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IStudentService.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Service\\Service\\Interfaces\\IStudentService.cs",
+              "RelativeDocumentMoniker": "Service\\Service\\Interfaces\\IStudentService.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Service\\Service\\Interfaces\\IStudentService.cs",
+              "RelativeToolTip": "Service\\Service\\Interfaces\\IStudentService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAwAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-21T09:06:26.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GroupRepository.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Repository\\Repositories\\GroupRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\GroupRepository.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Repository\\Repositories\\GroupRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\GroupRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFgAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T09:01:51.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GroupController.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\CourseApp\\Controllers\\GroupController.cs",
+              "RelativeDocumentMoniker": "CourseApp\\Controllers\\GroupController.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\CourseApp\\Controllers\\GroupController.cs",
+              "RelativeToolTip": "CourseApp\\Controllers\\GroupController.cs",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAwwJoAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T08:39:59.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StudentControllers.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\CourseApp\\Controllers\\StudentControllers.cs",
+              "RelativeDocumentMoniker": "CourseApp\\Controllers\\StudentControllers.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\CourseApp\\Controllers\\StudentControllers.cs",
+              "RelativeToolTip": "CourseApp\\Controllers\\StudentControllers.cs",
+              "ViewState": "AQIAADoBAAAAAAAAAAAgwHIBAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:06:03.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StudentService.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Service\\Service\\StudentService.cs",
+              "RelativeDocumentMoniker": "Service\\Service\\StudentService.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Service\\Service\\StudentService.cs",
+              "RelativeToolTip": "Service\\Service\\StudentService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:02:18.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IStudentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Repository\\Repositories\\Interfaces\\IStudentRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\Interfaces\\IStudentRepository.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Repository\\Repositories\\Interfaces\\IStudentRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\Interfaces\\IStudentRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAwAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:01:15.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\CourseApp\\Program.cs",
+              "RelativeDocumentMoniker": "CourseApp\\Program.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\CourseApp\\Program.cs",
+              "RelativeToolTip": "CourseApp\\Program.cs",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAAFoAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T08:23:44.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BaseRepository.cs",
+              "DocumentMoniker": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Repository\\Repositories\\BaseRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\Repositories\\BaseRepository.cs",
+              "ToolTip": "C:\\Users\\nizam\\Documents\\C#\\CourseApp\\Repository\\Repositories\\BaseRepository.cs",
+              "RelativeToolTip": "Repository\\Repositories\\BaseRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwBEAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T16:31:00.866Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
