@@ -1,6 +1,4 @@
-﻿
-
-using CourseApp.Helpers.Extensions;
+﻿using CourseApp.Helpers.Extensions;
 using Domain.Entities;
 using Repository.Data;
 using Repository.Helpers.ExceptionMessages;
@@ -12,8 +10,8 @@ namespace CourseApp.Controllers
 {
     public class GroupController
     {
-        private IGroupService _groupService;
-        private IStudentService _studentService;
+        private readonly IGroupService _groupService;
+        private readonly IStudentService _studentService;
 
         public GroupController()
         {
@@ -23,403 +21,234 @@ namespace CourseApp.Controllers
 
         public void CreateGroup()
         {
-            ColorfullPrint.Print(ConsoleColor.Yellow, "Enter group's data: ");
+            ColorfullPrint.Print(ConsoleColor.Yellow, "Enter group's data:");
 
-            ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's name: ");
-            EnterName:  string name = Console.ReadLine();
-
-
-
-
-            if(string.IsNullOrEmpty(name.Trim()) )
+            var groupName = PromptForValidGroupName();
+            if (GroupExists(groupName))
             {
-                ColorfullPrint.Print(ConsoleColor.DarkRed, "Name can't be empty, enter again! ");
-                goto EnterName;
+                ColorfullPrint.Print(ConsoleColor.Red, "Group with this name already exists, choose a new one.");
+                groupName = PromptForValidGroupName();
             }
 
+            var teacher = PromptForNonEmptyInput("Enter group's teacher:");
+            var room = PromptForNonEmptyInput("Enter group's room name:");
 
-            for (int i = 0; i < 2; i++)
-            {
-                if (name[i] < 65 || name[i] > 90)
-                {
-                    ColorfullPrint.Print(ConsoleColor.Red, "Wrong name format, group name must be like XX-nnn, where XX are upper letters and nnn is 3 digit number");
-                    ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's name again: ");
-                    goto EnterName;
-                }
-            }
-
-
-            if (name[2] != '-')
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "Wrong name format, group name must be like XX-nnn, where XX are letters and nnn is 3 digit number");
-                ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's name again: ");
-                goto EnterName;
-            }
-
-            for (int i = 3; i <= 5; i++)
-            {
-                
-
-                if (char.IsLetter(name[i]))
-                {
-                    ColorfullPrint.Print(ConsoleColor.Red, "Wrong name format, group name must be like XX-nnn, where XX are letters and nnn is 3 digit number");
-                    ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's name again: ");
-                    goto EnterName;
-                }
-            }
-
-            foreach (var item in AppDbContext<EntitiesGroup>.Entity)
-            {
-                if(item.Name == name)
-                {
-                    ColorfullPrint.Print(ConsoleColor.Red, "Group with this name already exist, choose a new one: ");
-                    goto EnterName;
-                }
-            }
-
-            EntitiesGroup group = new EntitiesGroup();
-            group.Name = name;
-
-
-
-            ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's teacher: ");
-
-            EnterTeacher:  string teacher = Console.ReadLine();
-            if (string.IsNullOrEmpty(teacher.Trim()))
-            {
-                ColorfullPrint.Print(ConsoleColor.DarkRed, "Teacher's name  can't be empty, enter again! ");
-                goto EnterTeacher;
-            }
-            group.Teacher = teacher;
-
-
-            ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's room name: ");
-
-            RoomName: string room = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(room.Trim()))
-            {
-                ColorfullPrint.Print(ConsoleColor.DarkRed, "Room's name  can't be empty, enter again! ");
-                goto RoomName;
-            }
-
-            group.Room = room;
-
-
+            var group = new EntitiesGroup { Name = groupName, Teacher = teacher, Room = room };
             _groupService.Create(group);
-            ColorfullPrint.Print(ConsoleColor.Green, "Data successfully created! ");
+            ColorfullPrint.Print(ConsoleColor.Green, "Data successfully created!");
         }
+
         public void ShowAllGroups()
         {
-           var data =  _groupService.GetAll();
-
-            if (data.Count == 0)
+            var groups = _groupService.GetAll();
+            if (!groups.Any())
             {
-                ColorfullPrint.Print(ConsoleColor.Red, "No data to show :( ");
+                ColorfullPrint.Print(ConsoleColor.Red, "No data to show :(");
                 return;
-            }
-
-            foreach (var entity in data)
-            {
-
-                Console.WriteLine($"Group's id - {entity.Id}, Group's name - {entity.Name}, Group's teacher - {entity.Teacher}, Room's name - {entity.Room}");
-            }
-        }
-        public void DeleteGroup()
-        {
-            ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's id: ");
-
-            EnterId: string idStr = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(idStr.Trim()))
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "Id can't be empty, enter again!");
-                goto EnterId;
-            }
-
-            if (!int.TryParse(idStr, out int id))
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "Id's type is invalid, enter again!");
-                goto EnterId ;
-            }
-
-            bool isExist = false;
-
-            foreach (var item in AppDbContext<EntitiesGroup>.Entity)
-            {
-                if (item.Id == id) isExist = true;
-            }
-
-            var datas = _studentService.GetAllStudents().Where(x => x.Group.Id == id).ToList();
-
-            foreach (var item in datas)
-            {
-                 _studentService.Delete(item.Id);
-            }
-
-            if(isExist) _groupService.Delete(id);
-
-            
-            else
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "No data found");
-                return;
-
-            }
-
-
-            ColorfullPrint.Print(ConsoleColor.Green, "Group successfully deleted!");
-
-        }
-        public void GetGroupById()
-        {
-            ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's id: ");
-
-            EnterId: string idStr = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(idStr.Trim()))
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "Id can't be empty, enter again!");
-                goto EnterId;
-            }
-
-            if (!int.TryParse(idStr, out int id))
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "Id's type is invalid, enter again!");
-                goto EnterId;
-            }
-
-
-            bool isExist = false;
-
-            foreach (var item in AppDbContext<EntitiesGroup>.Entity)
-            {
-                if (item.Id == id) isExist = true;
-            }
-
-            if (isExist)
-            {
-                var data = _groupService.GetById(id);
-
-                Console.WriteLine($"Name - {data.Name}, Teacher - {data.Teacher}, Room - {data.Room}");
-            }
-
-            else
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "No data found");
-                return;
-
-            }
-
-        }
-        public void GetGroupsByTeacher()
-        {
-            ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter Teahcer's name: ");
-
-            enterTeacher:  string teacher = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(teacher.Trim()))
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "Name can't be empty, enter again: ");
-                goto enterTeacher;
-            }
-
-            var groups =  _groupService.GetGroupsByTeacher(teacher);
-
-            if(groups.Count == 0)
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "There's no group with this teacher");
-                return ;
             }
 
             foreach (var group in groups)
             {
-                Console.WriteLine($"Id - {group.Id}, Name - {group.Name}, Teacher - {group.Teacher}, Room - {group.Room}");
+                Console.WriteLine($"Group's ID: {group.Id}, Name: {group.Name}, Teacher: {group.Teacher}, Room: {group.Room}");
+            }
+        }
 
+        public void DeleteGroup()
+        {
+            var id = PromptForValidId("Enter group's ID:");
+            var groupExists = AppDbContext<EntitiesGroup>.Entity.Any(item => item.Id == id);
+
+            if (!groupExists)
+            {
+                ColorfullPrint.Print(ConsoleColor.Red, "No data found");
+                return;
+            }
+
+            var studentsInGroup = _studentService.GetAllStudents().Where(student => student.Group.Id == id).ToList();
+            foreach (var student in studentsInGroup)
+            {
+                _studentService.Delete(student.Id);
+            }
+
+            _groupService.Delete(id);
+            ColorfullPrint.Print(ConsoleColor.Green, "Group successfully deleted!");
+        }
+
+        public void GetGroupById()
+        {
+            var id = PromptForValidId("Enter group's ID:");
+            var group = _groupService.GetById(id);
+
+            if (group == null)
+            {
+                ColorfullPrint.Print(ConsoleColor.Red, "No data found");
+                return;
+            }
+
+            Console.WriteLine($"Name: {group.Name}, Teacher: {group.Teacher}, Room: {group.Room}");
+        }
+
+        public void GetGroupsByTeacher()
+        {
+            var teacher = PromptForNonEmptyInput("Enter Teacher's name:");
+            var groups = _groupService.GetGroupsByTeacher(teacher);
+
+            if (!groups.Any())
+            {
+                ColorfullPrint.Print(ConsoleColor.Red, "There's no group with this teacher.");
+                return;
+            }
+
+            foreach (var group in groups)
+            {
+                Console.WriteLine($"ID: {group.Id}, Name: {group.Name}, Teacher: {group.Teacher}, Room: {group.Room}");
             }
         }
 
         public void GetGroupsByRoom()
         {
-            ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter room's name: ");
-
-            enterRoom: string room = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(room.Trim()))
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "Name can't be empty, enter again: ");
-                goto enterRoom;
-            }
-
+            var room = PromptForNonEmptyInput("Enter room's name:");
             var groups = _groupService.GetGroupsByRoom(room);
 
-            if (groups.Count == 0)
+            if (!groups.Any())
             {
-                ColorfullPrint.Print(ConsoleColor.Red, "There's no group with this room");
+                ColorfullPrint.Print(ConsoleColor.Red, "There's no group with this room.");
                 return;
             }
 
             foreach (var group in groups)
             {
-                Console.WriteLine($"Id - {group.Id}, Name - {group.Name}, Teacher - {group.Teacher}, Room - {group.Room}");
-
+                Console.WriteLine($"ID: {group.Id}, Name: {group.Name}, Teacher: {group.Teacher}, Room: {group.Room}");
             }
         }
-
 
         public void GetGroupByName()
         {
-            ColorfullPrint.Print(ConsoleColor.Yellow, "Enter group name:");
-
-            enterName:  string name = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(name.Trim()))
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "Group name cant be empty, enter again!");
-                goto enterName;
-            }
-
+            var name = PromptForNonEmptyInput("Enter group name:");
             try
             {
-                EntitiesGroup group = new EntitiesGroup();
-
-                group = _groupService.SearchGroupByName(name);
-
-                if (group.Name == string.Empty)
+                var group = _groupService.SearchGroupByName(name);
+                if (group == null || string.IsNullOrEmpty(group.Name))
                 {
-                    ColorfullPrint.Print(ConsoleColor.Red, "No data found");
+                    ColorfullPrint.Print(ConsoleColor.Red, "No data found.");
                     return;
                 }
 
-                Console.WriteLine($"Id - {group.Id}, Name - {group.Name}, Teacher - {group.Teacher}, Room - {group.Room}");
+                Console.WriteLine($"ID: {group.Id}, Name: {group.Name}, Teacher: {group.Teacher}, Room: {group.Room}");
             }
-            catch (CustomNotFoundException )
+            catch (CustomNotFoundException)
             {
                 ColorfullPrint.Print(ConsoleColor.Red, CustomNotFoundMessage.message);
             }
-
-
         }
-
 
         public void Update()
         {
+            var id = PromptForValidId("Enter group's ID:");
+            var group = AppDbContext<EntitiesGroup>.Entity.FirstOrDefault(item => item.Id == id);
 
-            ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's id: ");
-
-            EnterId: string idStr = Console.ReadLine();
-
-            if (string.IsNullOrEmpty(idStr.Trim()))
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "Id can't be empty, enter again!");
-                goto EnterId;
-            }
-
-            if (!int.TryParse(idStr, out int id))
-            {
-                ColorfullPrint.Print(ConsoleColor.Red, "Id's type is invalid, enter again!");
-                goto EnterId;
-            }
-
-
-            bool isExist = false;
-            EntitiesGroup group = new();
-
-            foreach (var item in AppDbContext<EntitiesGroup>.Entity)
-            {
-                if (item.Id == id)
-                {
-                    isExist = true;
-                    group = item;
-                    
-                }
-            }
-
-            if(!isExist)
+            if (group == null)
             {
                 ColorfullPrint.Print(ConsoleColor.Red, CustomNotFoundMessage.message);
                 return;
-
             }
 
-            else
+            ColorfullPrint.Print(ConsoleColor.Yellow, "Enter the group's details if you want to update them; otherwise, they won't be changed:");
+            var newName = PromptForOptionalValidGroupName("Enter the group name:");
+            var newRoom = PromptForOptionalInput("Enter the group's room name:");
+            var newTeacher = PromptForOptionalInput("Enter the group teacher's name:");
+
+            if (!string.IsNullOrEmpty(newName)) group.Name = newName;
+            if (!string.IsNullOrEmpty(newRoom)) group.Room = newRoom;
+            if (!string.IsNullOrEmpty(newTeacher)) group.Teacher = newTeacher;
+
+            try
             {
-                try
-                {
-                    ColorfullPrint.Print(ConsoleColor.Yellow, "Enter the groups' details if you wanna update'em, otherwise they won't be changed: \r\n");
-
-                    ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter the group name : ");
-                    EnterName: string name = Console.ReadLine();
-
-
-
-                    if (!string.IsNullOrEmpty(name.Trim()))
-                    {
-                        for (int i = 0; i < 2; i++)
-                        {
-                            if (name[i] < 65 || name[i] > 90)
-                            {
-                                ColorfullPrint.Print(ConsoleColor.Red, "Wrong name format, group name must be like XX-nnn, where XX are upper letters and nnn is 3 digit number");
-                                ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's name again: ");
-                                goto EnterName;
-                            }
-                        }
-
-
-                        if ((name[2] != '-'))
-                        {
-                            ColorfullPrint.Print(ConsoleColor.Red, "Wrong name format, group name must be like XX-nnn, where XX are letters and nnn is 3 digit number");
-                            ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's name again: ");
-                            goto EnterName;
-                        }
-
-                        for (int i = 3; i <= 5; i++)
-                        {
-
-
-                            if (char.IsLetter(name[i]))
-                            {
-                                ColorfullPrint.Print(ConsoleColor.Red, "Wrong name format, group name must be like XX-nnn, where XX are letters and nnn is 3 digit number");
-                                ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's name again: ");
-                                goto EnterName;
-                            }
-                        }
-                        group.Name = name;
-                    }
-
-                    ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter the group's room name : ");
-                    string room = Console.ReadLine();
-
-                    if (!string.IsNullOrEmpty(room.Trim())) group.Room = room;
-
-                    ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter the group teacher's name : ");
-                    enterTeacherName: string teacher = Console.ReadLine();
-
-                    if (!string.IsNullOrEmpty(teacher.Trim()))
-                    {
-                        foreach (var item in teacher)
-                        {
-                            if (char.IsDigit(item))
-                            {
-                                ColorfullPrint.Print(ConsoleColor.Red, "Teacher's name must only contain letters");
-                                goto enterTeacherName;
-                            }
-                        }
-                        group.Teacher= teacher;
-                    }
-
-                    _groupService.Update(group);
-
-                    ColorfullPrint.Print(ConsoleColor.Green, "Group successfully updated! ");
-                }
-                catch (CustomNotFoundException)
-                {
-                    ColorfullPrint.Print(ConsoleColor.Red, CustomNotFoundMessage.message);
-                }
-                
-
-
+                _groupService.Update(group);
+                ColorfullPrint.Print(ConsoleColor.Green, "Group successfully updated!");
             }
+            catch (CustomNotFoundException)
+            {
+                ColorfullPrint.Print(ConsoleColor.Red, CustomNotFoundMessage.message);
+            }
+        }
+
+        // Helper Methods
+
+        private string PromptForValidGroupName()
+        {
+            while (true)
+            {
+                ColorfullPrint.Print(ConsoleColor.DarkMagenta, "Enter group's name (format: XX-nnn):");
+                var name = Console.ReadLine();
+
+                if (!string.IsNullOrEmpty(name) && ValidateGroupName(name))
+                {
+                    return name.Trim();
+                }
+
+                ColorfullPrint.Print(ConsoleColor.Red, "Invalid format. Group name must be like XX-nnn, where XX are uppercase letters, and nnn is a 3-digit number.");
+            }
+        }
+
+        private bool ValidateGroupName(string name)
+        {
+            return name.Length == 6 &&
+                   char.IsUpper(name[0]) &&
+                   char.IsUpper(name[1]) &&
+                   name[2] == '-' &&
+                   char.IsDigit(name[3]) &&
+                   char.IsDigit(name[4]) &&
+                   char.IsDigit(name[5]);
+        }
+
+        private bool GroupExists(string name)
+        {
+            return AppDbContext<EntitiesGroup>.Entity.Any(item => item.Name == name);
+        }
+
+        private string PromptForNonEmptyInput(string prompt)
+        {
+            while (true)
+            {
+                ColorfullPrint.Print(ConsoleColor.DarkMagenta, prompt);
+                var input = Console.ReadLine();
+
+                if (!string.IsNullOrEmpty(input?.Trim()))
+                {
+                    return input.Trim();
+                }
+
+                ColorfullPrint.Print(ConsoleColor.DarkRed, "Input cannot be empty, please try again.");
+            }
+        }
+
+        private string PromptForOptionalInput(string prompt)
+        {
+            ColorfullPrint.Print(ConsoleColor.DarkMagenta, prompt);
+            return Console.ReadLine()?.Trim();
+        }
+
+        private int PromptForValidId(string prompt)
+        {
+            while (true)
+            {
+                ColorfullPrint.Print(ConsoleColor.DarkMagenta, prompt);
+                var input = Console.ReadLine();
+
+                if (int.TryParse(input, out var id))
+                {
+                    return id;
+                }
+
+                ColorfullPrint.Print(ConsoleColor.Red, "Invalid ID, please enter a valid number.");
+            }
+        }
+
+        private string PromptForOptionalValidGroupName(string prompt)
+        {
+            var name = PromptForOptionalInput(prompt);
+            return string.IsNullOrEmpty(name) || ValidateGroupName(name) ? name : PromptForOptionalValidGroupName(prompt);
         }
     }
 }
